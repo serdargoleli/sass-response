@@ -7,17 +7,17 @@
   text-decoration: none;
 }
 // Response
-// parametremizin değerini varsayılan olarak tablet belirledik
+// parametremizin değerini varsayılan olarak "tablet" olarak belirledik
 @mixin mq($width: "tablet") {
   @if ($width == "tablet") {
     @media (min-width: 768px) {
-      // @content: include edilen yerdeki değişiklleri buraya eklem
+      // @content: include edilen yerdeki değişiklikleri buraya ekle
       @content;
     }
   } @else if ($width == "dektop") {
     @media (min-width: 992px) {
       @content;
-      // @content: include edilen yerdeki değişiklleri buraya eklem
+      // @content: include edilen yerdeki değişiklikleri buraya ekle
     }
   }
 }
