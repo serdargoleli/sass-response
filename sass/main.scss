@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+// Response
+// parametremizin değerini varsayılan olarak tablet belirledik
+@mixin mq($width: "tablet") {
+  @if ($width == "tablet") {
+    @media (min-width: 768px) {
+      // @content: include edilen yerdeki değişiklleri buraya eklem
+      @content;
+    }
+  } @else if ($width == "dektop") {
+    @media (min-width: 992px) {
+      @content;
+      // @content: include edilen yerdeki değişiklleri buraya eklem
+    }
+  }
+}
+
+html,
+body {
+  height: 100vh;
+}
+body {
+  background: #0e0e0e;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+
+  // oluşturduğumuz mixin fonksiyonumuzu çağırıyoruz
+  @include mq("dektop") {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include mq("tablet") {
+    // min-width:768px olduğunda burayı uygula
+    flex-direction: row;
+  }
+  a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 70px;
+    transition: all 0.3s;
+    &:hover {
+      color: #e9f814;
+    }
+    @include mq("tablet") {
+      // min-width:768px olduğunda burayı uygula
+      font-size: 40px;
+      margin-right: 25px;
+    }
+    @include mq("desktop") {
+      // min-width:992px olduğunda burayı uygula
+      font-size: 40px;
+      margin-right: 25px;
+    }
+  }
+}
